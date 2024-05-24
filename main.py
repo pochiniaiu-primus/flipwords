@@ -1,16 +1,26 @@
-# This is a sample Python script.
+from tkinter import *
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+BACKGROUND_COLOR = "#B1DDC6"
 
+window = Tk()
+window.title("Flashy")
+window.config(padx=50, pady=50, bg=BACKGROUND_COLOR)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+canvas = Canvas(width=800, height=526)
+front_image = PhotoImage(file="images/card_front.png")
+canvas.create_image(400, 263, image=front_image)
+canvas.config(bg=BACKGROUND_COLOR, highlightthickness=0)
+canvas.create_text(400, 150, text="Title", font=("Ariel", 40, "italic"))
+canvas.create_text(400, 263, text="word", font=("Ariel", 60, "bold"))
+canvas.grid(row=0, column=0, columnspan=2)
 
+cross_image = PhotoImage(file="images/wrong.png")
+check_image = PhotoImage(file="images/right.png")
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+unknown_button = Button(image=cross_image, highlightthickness=0)
+unknown_button.grid(column=0, row=1)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+known_button = Button(image=check_image, highlightthickness=0)
+known_button.grid(column=1, row=1)
+
+window.mainloop()
